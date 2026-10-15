@@ -89,8 +89,8 @@ export function Home() {
 
         <div className="hero-content relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center px-5 pt-28 pb-24 text-center [perspective:1200px]">
           <p className="hero-fade eyebrow mb-10">{de.hero.eyebrow}</p>
-          <div className="hero-logo movoka-hero-logo [transform-style:preserve-3d]">
-            <Logo className="h-[20vw] max-h-40 w-[74vw] max-w-[600px]" />
+          <div className="hero-logo [transform-style:preserve-3d] drop-shadow-[0_0_35px_rgba(180,255,40,0.18)]">
+            <Logo className="h-[24vw] max-h-48 w-[84vw] max-w-[720px]" />
           </div>
           <h1 className="mt-14 font-display text-[clamp(2.4rem,7vw,6.2rem)] font-semibold leading-[0.95] tracking-tight">
             <span className="block overflow-hidden pb-2"><span className="hero-line block">{de.hero.titleA}</span></span>
@@ -218,7 +218,9 @@ export function Home() {
               <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
             </a>
             <div className="reveal mt-10">
-              <a href={mailto} className="group inline-flex flex-col items-center gap-2">
+              <a href={mailto} className="group inline-flex flex-col items-center gap-3">
+                <Logo variant="black" className="h-12 w-44 dark:hidden" />
+                <Logo variant="white" className="hidden h-12 w-44 dark:inline-flex" />
                 <span className="eyebrow">E-Mail</span>
                 <span className="relative font-display text-xl font-medium tracking-tight md:text-2xl">
                   {CONTACT_EMAIL}
@@ -233,7 +235,7 @@ export function Home() {
       {/* FOOTER */}
       <footer className="mx-auto max-w-7xl px-5 py-12 md:px-10">
         <div className="flex flex-col items-start gap-6 border-t pt-10 text-sm md:flex-row md:items-center md:justify-between">
-          <a href={mailto} className="font-display text-base font-medium transition-colors hover:text-lime-ink">{CONTACT_EMAIL}</a>
+          <div className="flex flex-wrap items-center gap-5"><Logo className="h-12 w-40" /><a href={mailto} className="font-display text-base font-medium transition-colors hover:text-lime-ink">{CONTACT_EMAIL}</a></div>
           <nav className="flex flex-wrap items-center gap-x-8 gap-y-3 text-muted-foreground">
             {de.footer.legal.map((l) => (
               <Link key={l.to} to={l.to} className="transition-colors hover:text-foreground">{l.label}</Link>

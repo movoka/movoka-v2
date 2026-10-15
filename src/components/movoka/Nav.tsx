@@ -6,18 +6,19 @@ import { cn } from "@/lib/utils";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  const [showHeader, setShowHeader] = useState(true);
+  const [visible, setVisible] = useState(true);
   const [open, setOpen] = useState(false);
   const [dark, setDark] = useState(true);
 
   useEffect(() => {
     setDark(document.documentElement.classList.contains("dark"));
-    let lastY = window.scrollY;
+    let previousY = window.scrollY;
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 40);
-      if (Math.abs(y - lastY) > 7) setShowHeader(y < 110 || y < lastY);
-      lastY = y;
+      if (y < 90 || y < previousY - 7) setVisible(true);
+      else if (y > previousY + 7 && y > 130) setVisible(false);
+      previousY = y;
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -39,8 +40,8 @@ export function Nav() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transform-gpu transition-[transform,opacity,background-color,padding] duration-700 ease-[cubic-bezier(.22,1,.36,1)]",
-          !showHeader && !open && "-translate-y-full opacity-0 pointer-events-none",
+          "fixed inset-x-0 top-0 z-50 transition-[transform,opacity,background-color,padding] duration-700 ease-out",
+          !visible && !open && "-translate-y-full opacity-0 pointer-events-none",
           scrolled ? "glass border-b py-3" : "py-6",
         )}
       >

@@ -1,7 +1,7 @@
-import k1 from "@/assets/konzept-01.jpg.asset.json";
-import k2 from "@/assets/konzept-02.jpg.asset.json";
-import k3 from "@/assets/konzept-03.jpg.asset.json";
-import k4 from "@/assets/konzept-04.jpg.asset.json";
+import k1 from "@/assets/konzept-01.jpg";
+import k2 from "@/assets/konzept-02.jpg";
+import k3 from "@/assets/konzept-03.jpg";
+import k4 from "@/assets/konzept-04.jpg";
 
 /** Official contact address — used for every contact action. */
 export const CONTACT_EMAIL = "info@movoka.de";
@@ -43,10 +43,10 @@ export const de = {
     titleAccent: "die Haltung zeigen.",
     note: "Designstudien — keine Kundenaufträge.",
     items: [
-      { src: k1.url, title: "Studio 01", tag: "Architektur & Immobilien", label: "Designkonzept" },
-      { src: k2.url, title: "Studio 02", tag: "Parfum & Luxus", label: "Designkonzept" },
-      { src: k3.url, title: "Studio 03", tag: "Gastronomie", label: "Designkonzept" },
-      { src: k4.url, title: "Studio 04", tag: "Automobile", label: "Designkonzept" },
+      { src: k1, title: "Studio 01", tag: "Architektur & Immobilien", label: "Designkonzept" },
+      { src: k2, title: "Studio 02", tag: "Parfum & Luxus", label: "Designkonzept" },
+      { src: k3, title: "Studio 03", tag: "Gastronomie", label: "Designkonzept" },
+      { src: k4, title: "Studio 04", tag: "Automobile", label: "Designkonzept" },
     ],
   },
   about: {
