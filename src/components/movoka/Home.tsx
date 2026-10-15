@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Plus } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -237,9 +236,6 @@ export function Home() {
         <div className="flex flex-col items-start gap-6 border-t pt-10 text-sm md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap items-center gap-5"><Logo className="h-12 w-40" /><a href={mailto} className="font-display text-base font-medium transition-colors hover:text-lime-ink">{CONTACT_EMAIL}</a></div>
           <nav className="flex flex-wrap items-center gap-x-8 gap-y-3 text-muted-foreground">
-            {de.footer.legal.map((l) => (
-              <Link key={l.to} to={l.to} className="transition-colors hover:text-foreground">{l.label}</Link>
-            ))}
             <span className="text-xs">© {new Date().getFullYear()} MOVOKA</span>
           </nav>
         </div>

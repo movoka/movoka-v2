@@ -107,7 +107,7 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{if(localStorage.getItem('movoka-theme')==='light')document.documentElement.classList.remove('dark')}catch(e){}`,
+            __html: `document.documentElement.classList.add('dark')`,
           }}
         />
       </head>
