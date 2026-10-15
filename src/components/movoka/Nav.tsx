@@ -16,7 +16,7 @@ export function Nav() {
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 40);
-      if (Math.abs(y - lastY) > 6) setShowHeader(y < 90 || y < lastY);
+      if (Math.abs(y - lastY) > 7) setShowHeader(y < 110 || y < lastY);
       lastY = y;
     };
     onScroll();
@@ -39,7 +39,7 @@ export function Nav() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-all duration-500",
+          "fixed inset-x-0 top-0 z-50 transform-gpu transition-[transform,opacity,background-color,padding] duration-700 ease-[cubic-bezier(.22,1,.36,1)]",
           !showHeader && !open && "-translate-y-full opacity-0 pointer-events-none",
           scrolled ? "glass border-b py-3" : "py-6",
         )}

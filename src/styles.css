@@ -211,18 +211,18 @@
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
 
-/* MOVOKA identity refinement: the original logo stays untouched; only its surrounding
-   presentation adapts to each theme. This removes the hard-edged black tile. */
+/* MOVOKA hero: retain original uploaded artwork and GSAP animation.
+   Blend the dark-backed logo into each scene without adding a black tile. */
 .movoka-logo-surface {
+  display: inline-block;
   background: transparent;
-  border-radius: .55rem;
+  border: 0;
+  border-radius: 0;
   isolation: isolate;
 }
 .movoka-logo-surface img {
   display: block;
-  mix-blend-mode: screen;
-}
-:root .movoka-logo-surface img {
+  max-width: 100%;
   mix-blend-mode: multiply;
 }
 .dark .movoka-logo-surface img {
@@ -230,15 +230,27 @@
 }
 .movoka-hero-logo {
   position: relative;
-  border-radius: 1.25rem;
-  padding: clamp(.5rem, 1.4vw, 1.15rem);
-  background: radial-gradient(ellipse at 50% 48%, rgba(169,192,163,.12), transparent 72%);
-  filter: drop-shadow(0 24px 45px rgba(30, 48, 30, .15));
+  padding: clamp(.25rem, 1vw, .85rem);
+  background: transparent;
+  border: none;
+  filter: drop-shadow(0 15px 35px rgba(37, 58, 35, .13));
   will-change: transform, opacity;
 }
+.movoka-hero-logo::before {
+  content: "";
+  position: absolute;
+  inset: -12% -8%;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(155, 191, 119, .13), transparent 70%);
+  filter: blur(24px);
+}
 .dark .movoka-hero-logo {
-  background: radial-gradient(ellipse at 50% 45%, rgba(190,255,92,.11), transparent 70%);
-  filter: drop-shadow(0 20px 48px rgba(154, 220, 75, .14));
+  filter: drop-shadow(0 18px 42px rgba(168, 227, 100, .17));
+}
+.dark .movoka-hero-logo::before {
+  background: radial-gradient(ellipse, rgba(174, 245, 91, .14), transparent 72%);
 }
 @media (prefers-reduced-motion: reduce) {
   .movoka-hero-logo { will-change: auto; }
