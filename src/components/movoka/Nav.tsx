@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { Menu, Moon, Sun, X } from "lucide-react";
-import { de } from "@/content/de";
+import { useLanguage, type Language } from "@/content/i18n";
 import { Logo } from "./Logo";
 import { cn } from "@/lib/utils";
 
 export function Nav() {
+  const { t: de, language, setLanguage } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
   const [open, setOpen] = useState(false);
@@ -58,6 +59,9 @@ export function Nav() {
             ))}
           </nav>
           <div className="flex items-center gap-2">
+            <select aria-label="Language / اللغة" value={language} onChange={(e)=>setLanguage(e.target.value as Language)} className="h-10 rounded-full border border-border bg-background px-2 text-xs font-semibold text-foreground focus:border-lime-ink">
+              <option value="de">DE</option><option value="en">EN</option><option value="ar">AR</option>
+            </select>
             <button onClick={toggle} aria-label="Farbmodus wechseln" className="grid h-10 w-10 place-items-center rounded-full border transition-colors hover:border-lime-ink">
               {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>

@@ -4,7 +4,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import heroDark from "@/assets/hero-stone.jpg";
 import heroLight from "@/assets/hero-stone-light.jpg";
-import { de, CONTACT_EMAIL, MAILTO } from "@/content/de";
+import { CONTACT_EMAIL, MAILTO } from "@/content/de";
+import { useLanguage } from "@/content/i18n";
 import { Logo } from "./Logo";
 import { Nav } from "./Nav";
 
@@ -12,6 +13,7 @@ const mailto = MAILTO;
 
 export function Home() {
   const root = useRef<HTMLDivElement>(null);
+  const { t: de, language } = useLanguage();
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -68,7 +70,7 @@ export function Home() {
       hero?.removeEventListener("pointermove", onMove);
       ctx.revert();
     };
-  }, []);
+  }, [language]);
 
   const statementWords = de.about.statement.split(" ");
 

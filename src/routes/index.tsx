@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Home } from "@/components/movoka/Home";
+import { LanguageProvider } from "@/content/i18n";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -12,5 +13,5 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: Home,
+  component: () => <LanguageProvider><Home /></LanguageProvider>,
 });
