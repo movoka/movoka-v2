@@ -5,7 +5,7 @@ import { Logo } from "./Logo";
 import { cn } from "@/lib/utils";
 
 export function Nav() {
-  const { t: de, language, setLanguage } = useLanguage();
+  const {t:de,language,setLanguage}=useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
   const [open, setOpen] = useState(false);
@@ -59,7 +59,7 @@ export function Nav() {
             ))}
           </nav>
           <div className="flex items-center gap-2">
-            <select aria-label="Language / اللغة" value={language} onChange={(e)=>setLanguage(e.target.value as Language)} className="h-10 rounded-full border border-border bg-background px-2 text-xs font-semibold text-foreground focus:border-lime-ink">
+            <select value={language} onChange={(event)=>setLanguage(event.target.value as Language)} aria-label="Language / اللغة / Sprache" className="h-10 rounded-full border border-border bg-background px-2 text-xs font-semibold text-foreground outline-none focus:border-lime-ink">
               <option value="de">DE</option><option value="en">EN</option><option value="ar">AR</option>
             </select>
             <button onClick={toggle} aria-label="Farbmodus wechseln" className="grid h-10 w-10 place-items-center rounded-full border transition-colors hover:border-lime-ink">

@@ -2,14 +2,15 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 import { de } from "./de";
 import { en } from "./en";
 import { ar } from "./ar";
+import type { Content } from "./de";
 export type Language = "de" | "en" | "ar";
-const dictionaries = { de, en, ar };
-const LanguageContext = createContext<{language:Language;setLanguage:(l:Language)=>void;t:typeof de}>({language:"de",setLanguage:()=>{},t:de});
+const dictionaries: Record<Language, Content> = { de, en, ar };
+const LanguageContext = createContext<{language: Language; setLanguage: (language: Language) => void; t: Content}>({language:"de",setLanguage:()=>{},t:de});
 export function LanguageProvider({children}:{children:ReactNode}) {
- const [language,setLanguageState] = useState<Language>("de");
- useEffect(()=>{try{const saved=localStorage.getItem("movoka-language");if(saved==="de"||saved==="en"||saved==="ar")setLanguageState(saved);}catch{}},[]);
- useEffect(()=>{document.documentElement.lang=language;document.documentElement.dir=language==="ar"?"rtl":"ltr";},[language]);
- const setLanguage=(l:Language)=>{setLanguageState(l);try{localStorage.setItem("movoka-language",l);}catch{}};
- return <LanguageContext.Provider value={{language,setLanguage,t:dictionaries[language]}}>{children}</LanguageContext.Provider>;
+  const [language,setLanguageState] = useState<Language>("de");
+  useEffect(()=>{ try { const saved=localStorage.getItem("movoka-language"); if(saved==="de"||saved==="en"||saved==="ar") setLanguageState(saved); } catch {} },[]);
+  useEffect(()=>{ document.documentElement.lang=language; document.documentElement.dir=language==="ar"?"rtl":"ltr"; },[language]);
+  const setLanguage=(value:Language)=>{setLanguageState(value);try{localStorage.setItem("movoka-language",value);}catch{}};
+  return <LanguageContext.Provider value={{language,setLanguage,t:dictionaries[language]}}>{children}</LanguageContext.Provider>;
 }
-export const useLanguage=()=>useContext(LanguageContext);
+export function useLanguage(){return useContext(LanguageContext);}
