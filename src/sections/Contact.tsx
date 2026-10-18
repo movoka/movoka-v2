@@ -82,6 +82,7 @@ export default function Contact() {
     if (!validate()) return;
     setStatus('loading');
     try {
+      if (!supabase) throw new Error('Contact form is not configured on this deployment.');
       const { error } = await supabase.from('contact_submissions').insert({
         name: form.name.trim(),
         email: form.email.trim(),
